@@ -10,7 +10,7 @@ function printFrames(frames) {
       {frames.map((f, i) => (
         <span
           key={i}
-          className="px-2 py-1 border rounded-md w-8 text-center bg-gray-100"
+          className="px-2 py-1 border rounded w-8 text-center bg-gray-100"
         >
           {f === -1 ? "-" : f}
         </span>
@@ -18,6 +18,7 @@ function printFrames(frames) {
     </div>
   );
 }
+
 
 // FIFO algorithm
 function runFIFO(pages, frameSize) {
@@ -252,23 +253,24 @@ export default function PageReplacementSim() {
               </div>
             </div>
           )}
-          <Button onClick={handleRun} className="w-full">Run</Button>
+          <Button onClick={handleRun} >Run</Button>
         </CardContent>
       </Card>
 
       {result && (
         <div className="space-y-2" key={runId}>
           {result.steps.map((f, i) => (
-            <motion.div
-              key={i}
-              className="p-2 border rounded-md bg-white shadow flex items-center gap-3"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: i * 0.1 }}
-            >
-              <span className="text-sm text-gray-500">Step {i + 1}</span>
-              {printFrames(f)}
-            </motion.div>
+           <motion.div
+  key={i}
+  className="p-2 bg-gray-200 rounded-md bg-gray-100 shadow-sm flex items-center gap-3"
+  initial={{ opacity: 0, x: -20 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.3, delay: i * 0.1 }}
+>
+  <span className="text-sm text-gray-500">Step {i + 1}</span>
+  {printFrames(f)}
+</motion.div>
+
           ))}
           <div className="mt-3 font-bold">Total Page Faults: {result.faults}</div>
         </div>
