@@ -267,7 +267,7 @@ export default function PageReplacementSim() {
   animate={{ opacity: 1, x: 0 }}
   transition={{ duration: 0.3, delay: i * 0.1 }}
 >
-  <span className="text-sm text-gray-500">Step {i + 1}</span>
+  <span className="text-sm text-gray-700 font-bold">Step {i + 1}</span>
   {printFrames(f)}
 </motion.div>
 
